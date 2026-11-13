@@ -4,43 +4,49 @@ Junior Python-разработчик.
 
 ## Навыки
 
-Python, Django, Django REST Framework, SQL, pytest, unittest, Git. Знакома с PostgreSQL, Docker, Nginx, GitHub Actions и Flask.
+- Python, ООП
+- Django, Django ORM, Django REST Framework, Flask
+- PostgreSQL, SQLite, SQL
+- pytest, unittest
+- Docker, Nginx, GitHub Actions
+- Git, GitHub
+- Telegram Bot API
 
 ## Проекты
 
 ### REST API
 
-**[Foodgram](https://github.com/Rufina007/foodgram)**: сервис рецептов с избранным, подписками на авторов и списком покупок, который суммирует ингредиенты и скачивается файлом. Настроены Docker и CI/CD.
-Стек: Django, DRF, PostgreSQL, Docker, Nginx, GitHub Actions.
+**[Foodgram](https://github.com/Rufina007/foodgram)**: сервис рецептов. Пользователи публикуют рецепты с фото, тегами и ингредиентами, добавляют чужие рецепты в избранное и подписываются на авторов. Список покупок суммирует ингредиенты из нескольких рецептов и скачивается файлом, у каждого рецепта есть короткая ссылка. Проект работает в четырёх контейнерах, а GitHub Actions проверяет код, собирает образы и разворачивает их на сервере.
+Стек: Python, Django, Django REST Framework, Djoser, PostgreSQL, Docker, Nginx, GitHub Actions.
 
-**[YaMDb](https://github.com/Rufina007/api-yamdb)**: API отзывов на произведения с рейтингом, JWT и тремя ролями. Командный проект из трёх человек. Моя часть: модели отзывов и комментариев, права доступа, сериализаторы и вьюсеты, рейтинг, фильтрация и импорт из CSV.
-Стек: Django, DRF, Simple JWT.
+**[YaMDb](https://github.com/Rufina007/api-yamdb)**: API отзывов на фильмы, книги и музыку. Пользователи ставят оценки от 1 до 10, из них считается рейтинг произведения. Регистрация проходит через код подтверждения на почту, вход по JWT-токену, есть роли пользователя, модератора и администратора. Командный проект из трёх человек. Моя часть: модели отзывов и комментариев, права доступа, сериализаторы, вьюсеты и маршруты для отзывов, комментариев, произведений, категорий и жанров, расчёт рейтинга, фильтрация произведений, запрет повторного отзыва и загрузка данных из CSV.
+Стек: Python, Django, Django REST Framework, Simple JWT, SQLite, pytest.
 
-**[API Yatube](https://github.com/Rufina007/api-final-yatube)**: REST API соцсети: посты, комментарии, сообщества, подписки.
-Стек: Django, DRF, Simple JWT.
+**[API Yatube](https://github.com/Rufina007/api-final-yatube)**: REST API для соцсети. Через него можно публиковать посты, комментировать их, объединять посты в сообщества и подписываться на авторов. Вход по JWT-токену, редактировать и удалять запись может только её автор, есть пагинация и поиск по подпискам.
+Стек: Python, Django, Django REST Framework, Simple JWT.
 
 ### Развёртывание
 
-**[Kittygram](https://github.com/Rufina007/kittygram_final)**: контейнеризация и CI/CD для приложения на Django и React: тесты, сборка образов и автодеплой по SSH.
-Стек: Docker, Nginx, GitHub Actions, PostgreSQL.
+**[Kittygram](https://github.com/Rufina007/kittygram_final)**: развёртывание сервиса для публикации фотографий котиков. Приложение на Django и React упаковано в три контейнера, Nginx принимает запросы и раздаёт статику, данные хранятся в PostgreSQL. Для разработки и для сервера настроены отдельные compose-файлы, секреты вынесены в переменные окружения. GitHub Actions запускает тесты, публикует образы в Docker Hub и разворачивает проект по SSH. Если тесты не прошли, на сервер ничего не попадает.
+Стек: Python, Django, Django REST Framework, PostgreSQL, Docker, Nginx, GitHub Actions.
 
 ### Flask
 
-**[YaCut](https://github.com/Rufina007/async-yacut)**: сервис коротких ссылок с API и асинхронной загрузкой файлов на Яндекс Диск.
-Стек: Flask, SQLAlchemy, aiohttp.
+**[YaCut](https://github.com/Rufina007/async-yacut)**: сервис коротких ссылок. Короткий идентификатор создаётся автоматически или задаётся вручную. Есть API для других сервисов, ошибки возвращаются в JSON. Сервис загружает несколько файлов на Яндекс Диск параллельно через asyncio и выдаёт короткую ссылку на каждый.
+Стек: Python, Flask, Flask-SQLAlchemy, Alembic, aiohttp, API Яндекс Диска.
 
 ### Тестирование
 
-**[Тесты Django-проектов](https://github.com/Rufina007/django-testing)**: тесты маршрутов, прав доступа и логики для двух приложений, на pytest и на unittest.
-Стек: pytest, pytest-django, unittest.
+**[Тесты Django-проектов](https://github.com/Rufina007/django-testing)**: тесты для новостного сайта и сервиса заметок. Проверяют доступность страниц для анонимных и авторизованных пользователей, редиректы, сортировку новостей и комментариев, права на редактирование и удаление, фильтр запрещённых слов и создание slug. Одни и те же проверки написаны дважды: на pytest с фикстурами и параметризацией и на unittest.
+Стек: Python, pytest, pytest-django, unittest.
 
 ### Боты и игры
 
-**[Homework Bot](https://github.com/Rufina007/homework-bot)**: Telegram-бот, который следит за статусом проверки домашней работы.
-Стек: pyTelegramBotAPI, requests, logging.
+**[Homework Bot](https://github.com/Rufina007/homework-bot)**: Telegram-бот, который раз в 10 минут проверяет статус домашней работы через API Практикума и пишет, когда работу взяли на проверку, приняли или вернули с замечаниями. При запуске бот проверяет, что заданы все токены. Ответ API проходит проверку, события и ошибки пишутся в лог, а об одной и той же ошибке бот сообщает в Telegram только один раз.
+Стек: Python, pyTelegramBotAPI, requests, logging.
 
-**[The Snake](https://github.com/Rufina007/the_snake)**: «Змейка» на классах.
-Стек: Pygame.
+**[The Snake](https://github.com/Rufina007/the_snake)**: классическая «Змейка». Змейка управляется стрелками, ест яблоки и растёт, при столкновении с собой игра начинается заново. Код построен на классах: общий класс игрового объекта, от него наследуются змейка и яблоко.
+Стек: Python, Pygame.
 
 ## Связаться
 
